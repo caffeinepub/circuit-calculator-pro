@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+    /* Light mode — slightly desaturated for readability */
+    --background: 0.96 0.008 220;
+    --foreground: 0.18 0.02 220;
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.02 220;
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.02 220;
+    --primary: 0.62 0.19 220;
+    --primary-foreground: 0.99 0 0;
+    --secondary: 0.93 0.01 220;
+    --secondary-foreground: 0.18 0.02 220;
+    --muted: 0.93 0.01 220;
+    --muted-foreground: 0.52 0.04 220;
+    --accent: 0.65 0.21 200;
+    --accent-foreground: 0.99 0 0;
+    --destructive: 0.58 0.22 28;
+    --destructive-foreground: 0.99 0 0;
+    --border: 0.87 0.02 220;
+    --input: 0.87 0.02 220;
+    --ring: 0.62 0.19 220;
+    --chart-1: 0.62 0.19 220;
+    --chart-2: 0.65 0.21 200;
+    --chart-3: 0.58 0.22 28;
+    --chart-4: 0.72 0.17 160;
+    --chart-5: 0.7 0.18 50;
+    --sidebar: 0.93 0.01 220;
+    --sidebar-foreground: 0.18 0.02 220;
+    --sidebar-primary: 0.62 0.19 220;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.88 0.02 220;
+    --sidebar-accent-foreground: 0.18 0.02 220;
+    --sidebar-border: 0.87 0.02 220;
+    --sidebar-ring: 0.62 0.19 220;
+
+    /* Custom circuit app tokens */
+    --circuit-bg: 0.96 0.008 220;
+    --circuit-card: 1 0 0;
+    --circuit-card-border: 0.87 0.02 220;
+    --circuit-input-bg: 0.96 0.008 220;
+    --circuit-text: 0.18 0.02 220;
+    --circuit-text-muted: 0.52 0.04 220;
+    --circuit-accent: 0.65 0.21 200;
+    --circuit-accent-glow: 0.65 0.21 200;
+  }
+
+  .dark {
+    /* Dark mode — deep navy engineering dashboard */
+    --background: 0.13 0.025 222;
+    --foreground: 0.92 0.015 220;
+    --card: 0.19 0.035 222;
+    --card-foreground: 0.92 0.015 220;
+    --popover: 0.22 0.04 222;
+    --popover-foreground: 0.92 0.015 220;
+    --primary: 0.68 0.22 198;
+    --primary-foreground: 0.1 0.02 222;
+    --secondary: 0.23 0.04 222;
+    --secondary-foreground: 0.92 0.015 220;
+    --muted: 0.23 0.04 222;
+    --muted-foreground: 0.6 0.05 222;
+    --accent: 0.68 0.22 198;
+    --accent-foreground: 0.1 0.02 222;
+    --destructive: 0.68 0.22 28;
+    --destructive-foreground: 0.99 0 0;
+    --border: 0.27 0.05 222;
+    --input: 0.2 0.04 222;
+    --ring: 0.68 0.22 198;
+    --chart-1: 0.68 0.22 198;
+    --chart-2: 0.72 0.17 160;
+    --chart-3: 0.68 0.22 28;
+    --chart-4: 0.65 0.21 200;
+    --chart-5: 0.7 0.18 50;
+    --sidebar: 0.16 0.03 222;
+    --sidebar-foreground: 0.92 0.015 220;
+    --sidebar-primary: 0.68 0.22 198;
+    --sidebar-primary-foreground: 0.1 0.02 222;
+    --sidebar-accent: 0.22 0.04 222;
+    --sidebar-accent-foreground: 0.92 0.015 220;
+    --sidebar-border: 0.27 0.05 222;
+    --sidebar-ring: 0.68 0.22 198;
+
+    /* Custom circuit app tokens */
+    --circuit-bg: 0.13 0.025 222;
+    --circuit-card: 0.19 0.035 222;
+    --circuit-card-border: 0.27 0.05 222;
+    --circuit-input-bg: 0.16 0.04 222;
+    --circuit-text: 0.92 0.015 220;
+    --circuit-text-muted: 0.6 0.05 222;
+    --circuit-accent: 0.68 0.22 198;
+    --circuit-accent-glow: 0.68 0.22 198;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+}
+
+/* Blueprint grid background */
+.circuit-grid-bg {
+  background-image: linear-gradient(
+      oklch(var(--circuit-accent) / 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      oklch(var(--circuit-accent) / 0.06) 1px,
+      transparent 1px
+    );
+  background-size: 40px 40px;
+}
+
+.dark .circuit-grid-bg {
+  background-image: linear-gradient(
+      oklch(var(--circuit-accent) / 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      oklch(var(--circuit-accent) / 0.08) 1px,
+      transparent 1px
+    );
+  background-size: 40px 40px;
+}
+
+/* Cyan accent glow on active/focused states */
+.accent-glow {
+  box-shadow: 0 0 12px oklch(var(--circuit-accent) / 0.35);
+}
+
+.accent-glow-sm {
+  box-shadow: 0 0 6px oklch(var(--circuit-accent) / 0.3);
+}
+
+/* Toggle switch glow */
+[data-state="checked"].circuit-switch {
+  background-color: oklch(var(--circuit-accent));
+  box-shadow: 0 0 8px oklch(var(--circuit-accent) / 0.5);
+}
+
+/* Mono font for values/formulas */
+.font-mono-circuit {
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Active tab underline */
+.tab-active-underline {
+  border-bottom: 2px solid oklch(var(--circuit-accent));
+  color: oklch(var(--circuit-accent));
+}
+
+/* Number input — remove arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
